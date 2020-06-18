@@ -32,16 +32,11 @@ router.get('/recipes/:id', (req, res) => {
 })
 //adds one recipe to the db
 router.post('/recipes', (req, res) => {
-  const { name, review, description, url, like, vegetarian, vegan, glutenfree } = req.body;
-  if(!name) {
-    res.status(400).json({ error: 'name field is required'})
-  }
-  if(!review) {
-    res.status(400).json({ error: 'review field is required'})
-  }
-  if(!url) {
-    res.status(400).json({ error: 'url field is required'})
-  }
+  const { name, review, description, url, like, vegetarian, vegan, glutenfree, categories } = req.body;
+  if (!name) { res.status(400).json({ error: 'name field is required' }) }
+  if (!review) { res.status(400).json({ error: 'review field is required' }) }
+  if (!url) { res.status(400).json({ error: 'url field is required' }) }
+
   db.Recipes.create({
     name: name,
     review: review,
@@ -51,12 +46,23 @@ router.post('/recipes', (req, res) => {
     vegetarian: vegetarian || false,
     vegan: vegan || false,
     glutenfree: glutenfree || false,
+    Categories: categories,
   })
-  .then(recipe =>{
-    res.status(201).json(recipe); //201 status is being created
-  })
-
-
+    .then(recipe => {
+      return recipe.addCategories(categories)
+        .then(categories => {
+          res.status(201).json(recipe); //201 status is being created
+        })
+    })
+    .catch(error => {
+      if (error.name === 'SequelizeForeignKeyConstraintError') {
+        res.json({ error: 'could not find all categories' });
+      } else {
+        res.json({ error: 'Server Error' });
+        console.log(error);
+      }
+    })
 })
+
 
 module.exports = router;
