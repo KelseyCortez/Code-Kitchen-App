@@ -17,6 +17,8 @@ module.exports = {
           model: 'Recipes',
           key: 'id'
         },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
 
       },
       CategoriesId: {
@@ -25,7 +27,9 @@ module.exports = {
         references: {
           model: 'Categories',
           key: 'id'
-        }
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,

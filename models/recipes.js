@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'RecipesCategories',
       foreignKey: 'recipesId',
       otherKey: 'CategoriesId',
+      onDelete: 'CASCADE',
     });
   };
   return Recipes;
