@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class Recipes extends Component {
     constructor() {
@@ -9,22 +11,37 @@ export default class Recipes extends Component {
     }
     componentDidMount() {
         fetch('/api/v1/recipes')
-        .then(res => res.json())
-        .then(data => {
-            this.setState({
-                recipes : data
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    recipes: data
+                })
             })
-        })
     }
     render() {
         return (
-            <div>
-                { this.state.recipes.map(recipe => {
-                    return (
-                    <pre>  { JSON.stringify(recipe, null, '\n' )} </pre>   
-                    )
-                })}
-            </div>
+            <Container>
+                <div>
+                    {this.state.recipes.map(recipe => {
+                        return (
+
+                            <Col>
+                                <Card>
+                                    <Card.Header>{recipe.name}</Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>
+                                            {recipe.description}
+                                        </Card.Text>
+                                        <Link to={`/recipes/${recipe.id}`}>Show Details</Link>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+
+                        )
+                    })}
+
+                </div>
+            </Container>
         )
     }
 }
