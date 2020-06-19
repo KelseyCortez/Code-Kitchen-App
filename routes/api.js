@@ -63,6 +63,8 @@ router.post('/recipes', (req, res) => {
       }
     })
 })
+
+//deletes a recipe
 router.delete('/recipes/:id', (req, res) => {
   db.Recipes.destroy({
     where: {
