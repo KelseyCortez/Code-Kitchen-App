@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default class Recipes extends Component {

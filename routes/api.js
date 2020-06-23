@@ -32,6 +32,7 @@ router.get('/recipes/:id', (req, res) => {
 })
 //adds one recipe to the db
 router.post('/recipes', (req, res) => {
+  console.log(req.body);
   const { name, review, description, url, like, vegetarian, vegan, glutenfree, categories } = req.body;
   if (!name) { res.status(400).json({ error: 'name field is required' }) }
   if (!review) { res.status(400).json({ error: 'review field is required' }) }

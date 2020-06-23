@@ -22,6 +22,7 @@ module.exports = {
       },
       like: {
         type: Sequelize.INTEGER
+
       },
       vegetarian: {
         type: Sequelize.BOOLEAN
