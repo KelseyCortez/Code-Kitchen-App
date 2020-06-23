@@ -29,9 +29,9 @@ export default class Recipes extends Component {
                                 <Card>
                                     <Card.Header>{recipe.name}</Card.Header>
                                     <Card.Body>
-                                        <Card.Text>
-                                            {recipe.description}
-                                        </Card.Text>
+                                        <Card.Text>{recipe.description}</Card.Text>
+                                        <Card.Text>{recipe.review}</Card.Text>
+                                        <Card.Text>{recipe.like}</Card.Text>
                                         <Link to={`/recipes/${recipe.id}`}>Show Details</Link>
                                     </Card.Body>
                                 </Card>

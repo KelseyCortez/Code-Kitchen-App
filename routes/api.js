@@ -46,7 +46,6 @@ router.post('/recipes', (req, res) => {
     vegetarian: vegetarian || false,
     vegan: vegan || false,
     glutenfree: glutenfree || false,
-    Categories: categories,
   })
     .then(recipe => {
       return recipe.addCategories(categories)

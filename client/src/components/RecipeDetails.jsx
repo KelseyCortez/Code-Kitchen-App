@@ -27,16 +27,11 @@ export default class RecipeDetails extends Component {
         }
         return (
             <div className="RecipeDetails">
-                <div key={details.id}>
-                    <div>
-                        <h2>{details.name}</h2>
-                        <p>{details.description}</p>
-                        <p>{details.review}</p>
-                    </div>
-                </div>
-                </div>
+                <h2>{details.name}</h2>
+            </div>
 
 
-)
+
+        )
     }
 }
