@@ -71,16 +71,30 @@ router.delete('/recipes/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then(number => {
-    if (number > 0) {
-      res.status(204).json({});
-    } else {
-      res.json({error: `could not find recipe with id: ${req.params.id}`})
-    }
-  })
+    .then(number => {
+      if (number > 0) {
+        res.status(204).json({});
+      } else {
+        res.json({ error: `could not find recipe with id: ${req.params.id}` })
+      }
+    })
 
 
 })
+
+//adding incrementing like route 
+router.post('/recipes/:id/like', (req, res) => {
+  db.Recipes.findByPk(req.params.id)
+
+    .then(recipe => {
+      recipe.like++
+      return recipe.save();
+    })
+    .then(recipe => {
+      res.json(recipe.like);
+    })
+})
+
 
 
 module.exports = router;

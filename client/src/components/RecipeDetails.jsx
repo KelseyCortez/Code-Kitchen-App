@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LikesButton from './LikesButton';
 
 export default class RecipeDetails extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class RecipeDetails extends Component {
                 })
             })
     }
+
     render() {
         const { loading, details } = this.state;
         if (loading) {
@@ -28,6 +30,12 @@ export default class RecipeDetails extends Component {
         return (
             <div className="RecipeDetails">
                 <h2>{details.name}</h2>
+                <div>
+                    <p>{details.description} </p>
+
+                </div>
+                <LikesButton id={details.id}/>
+               
             </div>
 
 

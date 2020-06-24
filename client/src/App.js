@@ -9,14 +9,15 @@ import NewRecipeForm from './components/NewRecipeForm';
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
-      <Switch>
-        <Route exact path= "/" component= {Recipes}/>
-        <Route path="/recipes/new" exact component= {NewRecipeForm}/>
-        <Route path= "/recipes/:id" component={RecipeDetails}/>
-      </Switch>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Recipes} />
+          <Route path="/recipes/new" exact component={NewRecipeForm} />
+          <Route path="/recipes/:id" component={RecipeDetails} />
+        </Switch>
+
       </div>
-       </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
